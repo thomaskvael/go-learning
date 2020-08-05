@@ -15,4 +15,14 @@ func main() {
 	MyStringArrayWithPointer[1] = "Moon"
 
 	fmt.Println(MyStringArray[0], MyStringArray[1])
+
+	//Array inside array
+	ContainerSlice := [2][2]string{}
+	ContainerSlice[0][0] = "Hello"
+	ContainerSlice[0][1] = "World"
+	ContainerSlice[1][0] = "Go"
+	ContainerSlice[1][1] = "Moon"
+
+	println(ContainerSlice[0][0])
+	println(ContainerSlice[0][1])
 }

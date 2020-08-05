@@ -33,6 +33,82 @@ func main() {
 
 	//Slice length and capacity
 	printSlice(LastSlice)
+
+	//Set length to 0
+	LastSlice = LastSlice[:0]
+	printSlice(LastSlice)
+
+	//Set length to 2
+	LastSlice = LastSlice[:2]
+	printSlice(LastSlice)
+
+	//Drop first value and set capacity to 2
+	LastSlice = LastSlice[1:]
+	printSlice(LastSlice)
+
+	//Set length to capacity
+	LastSlice = LastSlice[:cap(LastSlice)]
+	printSlice(LastSlice)
+
+	//Equilevant as above
+	LastSlice = LastSlice[:2]
+	printSlice(LastSlice)
+
+	//Slices inside slice
+
+	// Method 1
+	ContainerSlice := [][]string{}
+	row1 := []string{}
+	row2 := []string{}
+
+	row1 = append(row1, "Hello")
+	row1 = append(row1, "World")
+	row2 = append(row2, "Go")
+	row2 = append(row2, "Moon")
+	ContainerSlice = append(ContainerSlice, row1)
+	ContainerSlice = append(ContainerSlice, row2)
+
+	println(ContainerSlice[0][0])
+	println(ContainerSlice[0][1])
+	println(ContainerSlice[1][0])
+	println(ContainerSlice[1][1])
+
+	// Method 2
+	ContainerSlice2 := [][]string{}
+	ContainerSlice2Row1 := []string{"Hello", "World"}
+	ContainerSlice2Row2 := []string{"Go", "Moon"}
+	ContainerSlice2 = append(ContainerSlice2, ContainerSlice2Row1)
+	ContainerSlice2 = append(ContainerSlice2, ContainerSlice2Row2)
+
+	println(ContainerSlice2[0][0])
+	println(ContainerSlice2[0][1])
+
+	// Loop thru Slices
+
+	// Single slice (with index)
+	for i, value := range AnotherSlice {
+		fmt.Printf("[%d] %s\n", i, value)
+	}
+	// Single slice (without index)
+	for _, value := range AnotherSlice {
+		fmt.Printf("%s\n", value)
+	}
+	// Single slice (without value)
+	for i := range AnotherSlice {
+		fmt.Printf("%s\n", AnotherSlice[i])
+	}
+
+	// 2D/Nested slice
+	for i := range ContainerSlice {
+		fmt.Println(ContainerSlice[i])
+	}
+
+	for ContainerSliceIndex := range ContainerSlice {
+		for sliceIndex, value := range ContainerSlice[ContainerSliceIndex] {
+			fmt.Printf("%d %d %s\n", ContainerSliceIndex, sliceIndex, value)
+		}
+	}
+
 }
 
 func printSlice(s []string) {
